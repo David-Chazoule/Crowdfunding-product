@@ -12,10 +12,14 @@ function Header() {
   return (
     <div className="header-container">
       <div className="logo">
-        {showMenu? "" :<h2>crowfund</h2>}
+        {showMenu? "" :<h1>crowfund</h1>}
         
       </div>
+      <div className={`nav-container ${showMenu?'show-nav-container':''}`}>
       <Nav showMenu={showMenu} handleMenu={handleMenu} />
+
+      </div>
+     
       <div className="menu-box">
         {showMenu ? "" : (
           <img
