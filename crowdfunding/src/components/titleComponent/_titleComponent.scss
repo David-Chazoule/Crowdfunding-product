@@ -1,0 +1,70 @@
+.title-box {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 520px;
+  height: fit-content;
+  position: relative;
+  padding: 20px 30px 30px 30px;
+  border-radius: 10px;
+
+  .logoMaster {
+    width: 40px;
+    position: absolute;
+    right: 48%;
+    top: -12%;
+  }
+
+  h2 {
+    margin: 20px 0 4px 0;
+  }
+
+  p {
+    margin: 4px 0;
+  }
+
+  .footer-title-box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4vh;
+
+    button {
+      padding: 16px 20px;
+      border-radius: 20px;
+      border: none;
+      color: white;
+      font-weight: 700;
+      background-color: $ModerateCyan;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $DarkCyan;
+      }
+    }
+
+    .bookmaked {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      position: relative;
+      img {
+        width: 50px;
+        position: absolute;
+        left: 0;
+      }
+
+      span {
+        background-color: rgb(251, 247, 247);
+        padding: 13px 14px 13px 55px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: $DarkCyan;
+        font-weight: 700;
+        color: white;
+      }
+    }
+  }
+}
