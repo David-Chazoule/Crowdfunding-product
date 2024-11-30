@@ -1,0 +1,64 @@
+.container-goal {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: fit-content;
+  padding: 20px 30px 30px 30px;
+  border-radius: 10px;
+  background-color: white;
+  margin-top: 40px;
+  align-items: flex-start;
+  justify-content: center;
+
+  .goal-collect-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .collect,
+    .backers-box,
+    .daysleft {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+
+      h2 {
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .collect,
+    .backers-box {
+      border-right: 1px solid black;
+    }
+  }
+
+  .progress-bar-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    margin-top: 30px;
+
+    .progress-bar {
+      display: flex;
+      width: 100%;
+      height: 10px;
+      background-color: rgb(251, 247, 247);
+      border-radius: 5px;
+
+      .progress {
+        width: 80%;
+        height: 10px;
+        background-color: $ModerateCyan;
+        border-radius: 5px;
+      }
+    }
+  }
+}

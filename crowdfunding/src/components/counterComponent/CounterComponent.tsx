@@ -2,24 +2,26 @@ import React from "react";
 
 function CounterComponent() {
   return (
-    <div>
+    <div className="container-goal">
       <div className="goal-collect-box">
         <div className="collect">
-          <h3>$80000</h3>
+          <h2>$80000</h2>
           <p>of $100 000 backed</p>
         </div>
         <div className="backers-box">
-          <h3>5,007</h3>
+          <h2>5,007</h2>
           <p>totals backers</p>
         </div>
-        <div className="daysLelf-box">
-          <h3>56</h3>
+        <div className="daysleft">
+          <h2>56</h2>
           <p>days left</p>
         </div>
       </div>
 
-      <div className="progress-bar">
-        <div className="progress"></div>
+      <div className="progress-bar-box">
+        <div className="progress-bar">
+          <div className="progress"></div>
+        </div>
       </div>
     </div>
   );
