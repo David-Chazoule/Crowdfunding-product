@@ -1,16 +1,20 @@
-import React from "react";
 import TitleComponent from "../titleComponent/TitleComponent";
 import CounterComponent from "../counterComponent/CounterComponent";
 import ProjectComponent from "../projectComponent/ProjectComponent";
 
-function Main() {
+export interface Mainprops {
+  handleModal: () => void;
+}
+
+function Main({ handleModal }: Mainprops) {
   return (
     <div className="main">
       <div className="container-component">
-        <TitleComponent />
+        <TitleComponent handleModal={handleModal} />
         <CounterComponent />
-        <ProjectComponent/>
+        <ProjectComponent handleModal={handleModal} />
       </div>
+      <div></div>
     </div>
   );
 }
