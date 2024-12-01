@@ -1,15 +1,18 @@
 import React from "react";
+import { useAppState } from "../../appContext/AppContext";
 
 function CounterComponent() {
+  const {state}= useAppState();
+  const {totalAmount, totalBackers} = state;
   return (
     <div className="container-goal">
       <div className="goal-collect-box">
         <div className="collect">
-          <h2>$80000</h2>
+          <h2>${totalAmount}</h2>
           <p>of $100 000 backed</p>
         </div>
         <div className="backers-box">
-          <h2>5,007</h2>
+          <h2>{totalBackers}</h2>
           <p>totals backers</p>
         </div>
         <div className="daysleft">

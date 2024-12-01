@@ -1,11 +1,38 @@
 import React, { useState } from "react";
-
+import { useAppState } from "../../appContext/AppContext";
 export interface Modalprops {
   handleModal: () => void;
 }
 
 function Modal({ handleModal }: Modalprops) {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const { state, dispatch } = useAppState();
+  const { bambooStandQuantity, blackEditionQuantity } = state;
+  const [prices, setPrices] = useState({
+    bamboPrice: state.bamboPrice,
+    blackEditionPrice: state.blackEditionPrice,
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrices(prev => ({
+      ...prev,
+      [selectedCard === "card1" ? "bamboPrice" : "blackEditionPrice"]: Number(e.target.value),
+    }));
+  };
+
+  const handleSumbmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (selectedCard === "card1")
+      dispatch({ type: "SUBTRACT_BAMBO_QUANTITY", payload: 1 });
+    dispatch({ type: "ADD_TO_TOTAL_AMOUNT", payload: prices.bamboPrice });
+    if (selectedCard === "card2")
+      dispatch({ type: "SUBTRACT_BLACK_EDITION_QUANTITY", payload: 1 });
+    dispatch({
+      type: "ADD_TO_TOTAL_AMOUNT",
+      payload: prices.blackEditionPrice,
+    });
+  };
 
   const handleCardSelect = (cardId: string) => {
     setSelectedCard(cardId);
@@ -70,7 +97,7 @@ function Modal({ handleModal }: Modalprops) {
               </div>{" "}
               <div className="modalLeft">
                 {" "}
-                <h4>101</h4>
+                <h4>{bambooStandQuantity}</h4>
                 <p>left</p>
               </div>
             </div>
@@ -83,7 +110,15 @@ function Modal({ handleModal }: Modalprops) {
               <div className="pledge-box">
                 <p>Enter your pledge</p>{" "}
                 <div className="price-select">
-                  <input></input> <button>Continue</button>
+                  <form onSubmit={handleSumbmit}>
+                    {" "}
+                    <input
+                      type="number"
+                      value={prices.bamboPrice}
+                      onChange={handleChange}
+                    ></input>{" "}
+                    <button>Continue</button>
+                  </form>
                 </div>
               </div>
             )}
@@ -109,7 +144,7 @@ function Modal({ handleModal }: Modalprops) {
               </div>{" "}
               <div className="modalLeft">
                 {" "}
-                <h4>64</h4>
+                <h4>{blackEditionQuantity}</h4>
                 <p>left</p>
               </div>
             </div>
@@ -123,7 +158,15 @@ function Modal({ handleModal }: Modalprops) {
               <div className="pledge-box">
                 <p>Enter your pledge</p>{" "}
                 <div className="price-select">
-                  <input></input> <button>Continue</button>
+                  <form onSubmit={handleSumbmit}>
+                    {" "}
+                    <input
+                      type="number"
+                      value={prices.blackEditionPrice}
+                      onChange={handleChange}
+                    />{" "}
+                    <button>Continue</button>
+                  </form>
                 </div>
               </div>
             )}

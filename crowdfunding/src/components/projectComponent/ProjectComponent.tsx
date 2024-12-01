@@ -1,10 +1,13 @@
 import React from "react";
+import { useAppState } from "../../appContext/AppContext";
 
 export interface Projectprops {
   handleModal: () => void;
 }
 
 function ProjectComponent({ handleModal }: Projectprops) {
+  const { state } = useAppState();
+  const { bambooStandQuantity, blackEditionQuantity } = state;
   return (
     <div className="project-container">
       <div className="project-description">
@@ -38,7 +41,7 @@ function ProjectComponent({ handleModal }: Projectprops) {
           </div>
           <div className="reward-container">
             <span>
-              <h1> 101</h1>
+              <h1>{bambooStandQuantity}</h1>
               <p>left</p>
             </span>
             <button onClick={handleModal}>Select Reward</button>
@@ -60,7 +63,7 @@ function ProjectComponent({ handleModal }: Projectprops) {
 
           <div className="reward-container">
             <span>
-              <h1> 64 </h1>
+              <h1>{blackEditionQuantity}</h1>
               <p> left</p>
             </span>
             <button onClick={handleModal}>Select Reward</button>
