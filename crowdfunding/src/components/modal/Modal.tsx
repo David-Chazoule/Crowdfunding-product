@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAppState } from "../../appContext/AppContext";
 export interface Modalprops {
   handleModal: () => void;
+  handleConfirm: () => void;
 }
 
-function Modal({ handleModal }: Modalprops) {
+function Modal({ handleModal, handleConfirm }: Modalprops) {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const { state, dispatch } = useAppState();
   const { bambooStandQuantity, blackEditionQuantity } = state;
@@ -13,15 +14,31 @@ function Modal({ handleModal }: Modalprops) {
     blackEditionPrice: state.blackEditionPrice,
   });
 
+  useEffect(() => {
+    if (selectedCard === "card1") {
+      setPrices((prev) => ({ ...prev, bamboPrice: state.bamboPrice }));
+    } else if (selectedCard === "card2") {
+      setPrices((prev) => ({
+        ...prev,
+        blackEditionPrice: state.blackEditionPrice,
+      }));
+    }
+  }, [selectedCard, state.bamboPrice, state.blackEditionPrice]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrices(prev => ({
+    setPrices((prev) => ({
       ...prev,
-      [selectedCard === "card1" ? "bamboPrice" : "blackEditionPrice"]: Number(e.target.value),
+      [selectedCard === "card1" ? "bamboPrice" : "blackEditionPrice"]: Number(
+        e.target.value
+      ),
     }));
   };
 
   const handleSumbmit = (e: React.FormEvent) => {
     e.preventDefault();
+    dispatch({ type: "ADD_TO_BACKERS", payload: 1 });
+    handleModal();
+    handleConfirm();
 
     if (selectedCard === "card1")
       dispatch({ type: "SUBTRACT_BAMBO_QUANTITY", payload: 1 });
