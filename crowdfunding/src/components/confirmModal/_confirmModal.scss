@@ -16,17 +16,46 @@
   .confirm-modal {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 16%;
-    width: 600px;
+    width: 400px;
     height: fit-content;
-    padding: 20px 30px 30px 30px;
+    padding: 30px 30px 30px 30px;
     border-radius: 10px;
     background-color: white;
     margin-top: 20px;
 
     img {
-      width: 50px;
+      width: 80px;
+      margin: 10px 0;
+    }
+    h2 {
+      margin: 10px 0;
+    }
+    p {
+      color: $DarkGray;
+      width: 80%;
+      text-align: center;
+      line-height: 2em;
+      margin: 0;
+    }
+
+    button {
+      padding: 10px 30px;
+      border-radius: 20px;
+      border: none;
+      color: white;
+      font-weight: 700;
+      background-color: rgba(128, 128, 128, 0.249);
+      cursor: pointer;
+      margin-top: 20px;
+      font-family: $Commissioner;
+      background-color: $ModerateCyan;
+      &:hover {
+        background-color: $DarkCyan;
+      }
     }
   }
 }

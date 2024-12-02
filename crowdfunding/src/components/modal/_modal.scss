@@ -12,6 +12,7 @@
   width: 100%;
   height: 100%;
   z-index: 1000;
+  font-family: $Commissioner;
   .modal {
     display: flex;
     flex-direction: column;
@@ -19,61 +20,159 @@
     top: 26%;
     width: 800px;
     height: fit-content;
-    padding: 20px 30px 30px 30px;
+    padding: 30px 30px 30px 30px;
     border-radius: 10px;
     background-color: white;
     margin-top: 20px;
+
+    .btn-close {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+    }
 
     .modal-description {
       display: flex;
       flex-direction: column;
       width: 100%;
+      padding: 10px;
+      margin-left: 30px;
+      h2 {
+        margin: 10px 0;
+        font-weight: 900;
+      }
+
+      p {
+        color: $DarkGray;
+      }
     }
 
     .modal-project {
       display: flex;
       width: 100%;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
       .modal-card {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 90%;
         align-items: center;
         justify-content: center;
-        border: 1px solid black;
-        padding: 10px;
+        border: 1px solid rgb(193, 192, 192);
+        margin: 6px;
+        border-radius: 16px;
 
         .modal-select {
           display: flex;
+          padding: 10px;
 
           width: 100%;
           div {
             display: flex;
-            width: 100%;
+            width: 400px;
             align-items: center;
             justify-content: flex-start;
+
+            input {
+              margin-right: 8px;
+              width: 20px;
+              height: 20px;
+            }
+
+            label {
+              margin-right: 8px;
+              font-weight: 700;
+            }
+
+            p {
+              color: $ModerateCyan;
+              font-weight: 700;
+            }
           }
 
           .modalLeft {
             display: flex;
-            width: 100%;
+            width: 300px;
             align-items: center;
             justify-content: flex-end;
+
+            h4 {
+              margin-right: 6px;
+            }
+
+            p {
+              color: $DarkGray;
+              font-size: 14px;
+            }
           }
         }
-
+        .txt {
+          color: $DarkGray;
+          line-height: 1.8em;
+          margin-left: 20px;
+          padding: 4px;
+        }
         .pledge-box {
           display: flex;
           width: 100%;
-          border-top: 1px solid black;
+          border-top: 1px solid rgb(193, 192, 192);
           align-items: center;
           justify-content: space-between;
+          padding: 18px 0;
+
+          p {
+            width: 100%;
+            color: $DarkGray;
+            margin-left: 15px;
+            font-weight: 500;
+          }
 
           .price-select {
             display: flex;
             width: 100%;
             justify-content: flex-end;
+            margin-right: 15px;
+            form {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              justify-content: flex-end;
+
+              .input-price {
+                display: flex;
+                width: 80px;
+                border: 1px solid black;
+                border-radius: 20px;
+                padding: 6px;
+                margin-right: 8px;
+                p {
+                  margin: 0;
+                }
+                input {
+                  width: 60px;
+                  padding: 4px;
+                  border: none;
+                }
+              }
+
+              button {
+                padding: 10px 16px;
+                border-radius: 20px;
+                border: none;
+                color: white;
+                font-weight: 700;
+                background-color: rgba(128, 128, 128, 0.249);
+                cursor: pointer;
+                font-family: $Commissioner;
+                background-color: $ModerateCyan;
+                &:hover {
+                  background-color: $DarkCyan;
+                }
+              }
+            }
           }
         }
       }

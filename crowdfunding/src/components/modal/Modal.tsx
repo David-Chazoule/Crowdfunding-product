@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppState } from "../../appContext/AppContext";
+import closeModal from '../../styles/images/icon-close-modal.svg';
 export interface Modalprops {
   handleModal: () => void;
   handleConfirm: () => void;
@@ -7,7 +8,7 @@ export interface Modalprops {
 
 function Modal({ handleModal, handleConfirm }: Modalprops) {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-  const { state, dispatch } = useAppState();
+const { state, dispatch } = useAppState();
   const { bambooStandQuantity, blackEditionQuantity } = state;
   const [prices, setPrices] = useState({
     bamboPrice: state.bamboPrice,
@@ -55,11 +56,13 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
     setSelectedCard(cardId);
   };
 
+  
+
   return (
     <div className="modal-container">
       <div className="modal">
         <div className="btn-close" onClick={handleModal}>
-          X
+          <img src={closeModal} alt="icon-close-modal"/>
         </div>
         <div className="modal-description">
           <h2>Back this project</h2>
@@ -79,16 +82,17 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
             }}
           >
             <div className="modal-select">
-              <span>
+              <div>
                 <input
                   type="radio"
                   name="pledge"
                   checked={selectedCard === "card0"}
+                  onChange={()=>handleCardSelect("card0")}
                 />{" "}
                 <label>Pledge with no reward</label>
-              </span>
+              </div>
             </div>
-            <p>
+            <p className="txt">
               Choose to support us without a reward if you simply believe in our
               project. As a backer, you will be signed up to receive product
               updates via email.
@@ -109,6 +113,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                   type="radio"
                   name="pledge"
                   checked={selectedCard === "card1"}
+                  onChange={()=>handleCardSelect("card1")}
                 />{" "}
                 <label> Bamboo Stand</label> <p>Pledge $25 or more</p>
               </div>{" "}
@@ -118,7 +123,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                 <p>left</p>
               </div>
             </div>
-            <p>
+            <p className="txt">
               You get an ergonomic stand made of natural bamboo. You've helped
               us launch our promotional campaign, and you’ll be added to a
               special Backer member list.
@@ -129,11 +134,12 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                 <div className="price-select">
                   <form onSubmit={handleSumbmit}>
                     {" "}
-                    <input
+                    <div className="input-price"><p>$</p><input
                       type="number"
                       value={prices.bamboPrice}
                       onChange={handleChange}
-                    ></input>{" "}
+                    /></div>
+                    {" "}
                     <button>Continue</button>
                   </form>
                 </div>
@@ -155,9 +161,10 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                   type="radio"
                   name="pledge"
                   checked={selectedCard === "card2"}
+                  onChange={()=>handleCardSelect("card2")}
                 />{" "}
                 <label>Black Edition Stand</label>
-                <p>Pledge $75 or more</p>
+                <p >Pledge $75 or more</p>
               </div>{" "}
               <div className="modalLeft">
                 {" "}
@@ -166,7 +173,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               </div>
             </div>
 
-            <p>
+            <p className="txt">
               You get a Black Special Edition computer stand and a personal
               thank you. You’ll be added to our Backer member list. Shipping is
               included.
@@ -203,7 +210,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               </div>
             </div>
 
-            <p>
+            <p className="txt">
               You get two Special Edition Mahogany stands, a Backer T-Shirt, and
               a personal thank you. You’ll be added to our Backer member list.
               Shipping is included.

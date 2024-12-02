@@ -2,12 +2,12 @@ import React, { createContext, useReducer, useContext, ReactNode } from "react";
 import { Appstate } from "../types/Types";
 
 const initialState: Appstate = {
-  totalAmount: 85000,
+  totalAmount: 55000,
   bambooStandQuantity: 101,
   blackEditionQuantity: 64,
   bamboPrice: 25,
   blackEditionPrice: 75,
-  totalBackers: 5007,
+  totalBackers: 3007,
 };
 
 function appReducer(
