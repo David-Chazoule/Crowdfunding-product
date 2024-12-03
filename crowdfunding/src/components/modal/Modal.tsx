@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppState } from "../../appContext/AppContext";
-import closeModal from '../../styles/images/icon-close-modal.svg';
+import closeModal from "../../styles/images/icon-close-modal.svg";
 export interface Modalprops {
   handleModal: () => void;
   handleConfirm: () => void;
@@ -8,7 +8,7 @@ export interface Modalprops {
 
 function Modal({ handleModal, handleConfirm }: Modalprops) {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-const { state, dispatch } = useAppState();
+  const { state, dispatch } = useAppState();
   const { bambooStandQuantity, blackEditionQuantity } = state;
   const [prices, setPrices] = useState({
     bamboPrice: state.bamboPrice,
@@ -40,6 +40,7 @@ const { state, dispatch } = useAppState();
     dispatch({ type: "ADD_TO_BACKERS", payload: 1 });
     handleModal();
     handleConfirm();
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
     if (selectedCard === "card1")
       dispatch({ type: "SUBTRACT_BAMBO_QUANTITY", payload: 1 });
@@ -56,13 +57,11 @@ const { state, dispatch } = useAppState();
     setSelectedCard(cardId);
   };
 
-  
-
   return (
     <div className="modal-container">
       <div className="modal">
         <div className="btn-close" onClick={handleModal}>
-          <img src={closeModal} alt="icon-close-modal"/>
+          <img src={closeModal} alt="icon-close-modal" />
         </div>
         <div className="modal-description">
           <h2>Back this project</h2>
@@ -87,7 +86,7 @@ const { state, dispatch } = useAppState();
                   type="radio"
                   name="pledge"
                   checked={selectedCard === "card0"}
-                  onChange={()=>handleCardSelect("card0")}
+                  onChange={() => handleCardSelect("card0")}
                 />{" "}
                 <label>Pledge with no reward</label>
               </div>
@@ -113,7 +112,7 @@ const { state, dispatch } = useAppState();
                   type="radio"
                   name="pledge"
                   checked={selectedCard === "card1"}
-                  onChange={()=>handleCardSelect("card1")}
+                  onChange={() => handleCardSelect("card1")}
                 />{" "}
                 <label> Bamboo Stand</label> <p>Pledge $25 or more</p>
               </div>{" "}
@@ -134,12 +133,14 @@ const { state, dispatch } = useAppState();
                 <div className="price-select">
                   <form onSubmit={handleSumbmit}>
                     {" "}
-                    <div className="input-price"><p>$</p><input
-                      type="number"
-                      value={prices.bamboPrice}
-                      onChange={handleChange}
-                    /></div>
-                    {" "}
+                    <div className="input-price">
+                      <p>$</p>
+                      <input
+                        type="number"
+                        value={prices.bamboPrice}
+                        onChange={handleChange}
+                      />
+                    </div>{" "}
                     <button>Continue</button>
                   </form>
                 </div>
@@ -161,10 +162,10 @@ const { state, dispatch } = useAppState();
                   type="radio"
                   name="pledge"
                   checked={selectedCard === "card2"}
-                  onChange={()=>handleCardSelect("card2")}
+                  onChange={() => handleCardSelect("card2")}
                 />{" "}
                 <label>Black Edition Stand</label>
-                <p >Pledge $75 or more</p>
+                <p>Pledge $75 or more</p>
               </div>{" "}
               <div className="modalLeft">
                 {" "}
@@ -184,11 +185,14 @@ const { state, dispatch } = useAppState();
                 <div className="price-select">
                   <form onSubmit={handleSumbmit}>
                     {" "}
-                    <input
-                      type="number"
-                      value={prices.blackEditionPrice}
-                      onChange={handleChange}
-                    />{" "}
+                    <div className="input-price">
+                      <p>$</p>
+                      <input
+                        type="number"
+                        value={prices.blackEditionPrice}
+                        onChange={handleChange}
+                      />
+                    </div>{" "}
                     <button>Continue</button>
                   </form>
                 </div>

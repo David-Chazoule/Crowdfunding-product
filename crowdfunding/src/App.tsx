@@ -16,6 +16,7 @@ function App() {
 
   const handleModal = () => {
     setOpenModal(!openModal);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
     <div className="App">
