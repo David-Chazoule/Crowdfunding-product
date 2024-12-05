@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppState } from "../../appContext/AppContext";
-import closeModal from "../../styles/images/icon-close-modal.svg";
+import Closer from "../UI/Closer";
 export interface Modalprops {
   handleModal: () => void;
   handleConfirm: () => void;
@@ -61,7 +61,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
     <div className="modal-container">
       <div className="modal">
         <div className="btn-close" onClick={handleModal}>
-          <img src={closeModal} alt="icon-close-modal" />
+          <Closer />
         </div>
         <div className="modal-description">
           <h2>Back this project</h2>
@@ -81,10 +81,11 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
             }}
           >
             <div className="modal-select">
-              <div>
+              <div className="input-box">
                 <input
                   type="radio"
                   name="pledge"
+                  className="input-title"
                   checked={selectedCard === "card0"}
                   onChange={() => handleCardSelect("card0")}
                 />{" "}
@@ -107,10 +108,11 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
             }}
           >
             <div className="modal-select">
-              <div>
+              <div className="input-box">
                 <input
                   type="radio"
                   name="pledge"
+                  className="input-title"
                   checked={selectedCard === "card1"}
                   onChange={() => handleCardSelect("card1")}
                 />{" "}
@@ -157,10 +159,11 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
             }}
           >
             <div className="modal-select">
-              <div>
+              <div className="input-box">
                 <input
                   type="radio"
                   name="pledge"
+                  className="input-title"
                   checked={selectedCard === "card2"}
                   onChange={() => handleCardSelect("card2")}
                 />{" "}
@@ -200,21 +203,25 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
             )}
           </div>
 
-          <div className={`modal-card `}>
-            <div className="modal-select">
-              <div>
-                <input type="radio" name="pledge" />{" "}
+          <div className="modal-card-selected">
+            <div className="modal-selected">
+              <div className="input-box-selected">
+                <input
+                  className="input-title-selected"
+                  type="radio"
+                  name="pledge"
+                />{" "}
                 <label>Mahogany Special Edition</label>
                 <p>Pledge $200 or more</p>
               </div>{" "}
-              <div className="modalLeft">
+              <div className="modalLeft-selected">
                 {" "}
                 <h4>0</h4>
                 <p>left</p>
               </div>
             </div>
 
-            <p className="txt">
+            <p className="txt-selected">
               You get two Special Edition Mahogany stands, a Backer T-Shirt, and
               a personal thank you. You’ll be added to our Backer member list.
               Shipping is included.

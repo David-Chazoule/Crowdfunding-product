@@ -30,6 +30,14 @@
       width: 100%;
       align-items: center;
       justify-content: flex-end;
+
+      .icon {
+        opacity: 0.4;
+        cursor: pointer;
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
 
     .modal-description {
@@ -63,32 +71,60 @@
         justify-content: center;
         border: 1px solid rgb(193, 192, 192);
         margin: 6px;
+
         border-radius: 16px;
 
         .modal-select {
           display: flex;
-          padding: 10px;
+          padding: 10px 0 0 10px;
+          margin-bottom: 20px;
+          margin-top: 10px;
           width: 100%;
-          div {
+          .input-box {
             display: flex;
             width: 400px;
             align-items: center;
             justify-content: flex-start;
+            cursor: pointer;
 
-            input[type="radio"] {
-              margin-right: 8px;
+            .input-title {
+              margin-right: 14px;
               width: 20px;
               height: 20px;
+              appearance: none;
+              border: 1px solid $DarkGray;
+              border-radius: 50%;
+
+              cursor: pointer;
+              &:checked {
+                background-color: white;
+                position: relative;
+
+                &::after {
+                  content: "";
+                  width: 10px;
+                  height: 10px;
+                  background-color: $ModerateCyan;
+                  border-radius: 50%;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  border-color: black;
+                }
+              }
             }
 
             label {
-              margin-right: 8px;
+              margin-right: 14px;
               font-weight: 700;
+              cursor: pointer;
             }
 
             p {
               color: $ModerateCyan;
               font-weight: 700;
+              margin: 0;
             }
           }
 
@@ -99,20 +135,21 @@
             justify-content: flex-end;
 
             h4 {
-              margin-right: 6px;
+              margin: 0 6px 0 0;
             }
 
             p {
               color: $DarkGray;
               font-size: 14px;
+              margin: 0;
             }
           }
         }
         .txt {
           color: $DarkGray;
           line-height: 1.8em;
-          margin-left: 20px;
-          padding: 4px;
+          margin: 0 10px 20px 0;
+          width: 90%;
         }
         .pledge-box {
           display: flex;
@@ -149,6 +186,10 @@
                 padding: 10px;
                 margin-right: 8px;
                 align-items: center;
+
+                &:focus-within {
+                  border: 2px solid $ModerateCyan;
+                }
                 p {
                   margin: 0;
                   color: $DarkGray;
@@ -158,6 +199,18 @@
                   padding: 4px;
                   border: none;
                   font-weight: 700;
+                  outline: none;
+                  caret-color: $ModerateCyan;
+                }
+
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+
+                input[type="number"] {
+                  -moz-appearance: textfield;
                 }
               }
 
@@ -181,6 +234,94 @@
       }
       .selected {
         border: 2px solid $ModerateCyan;
+      }
+
+      .modal-card-selected {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(193, 192, 192, 0.43);
+        margin: 6px;
+        border-radius: 16px;
+
+        .modal-selected {
+          display: flex;
+          padding: 10px;
+          width: 100%;
+
+          .input-box-selected {
+            display: flex;
+            width: 400px;
+            align-items: center;
+            justify-content: flex-start;
+
+            .input-title-selected {
+              margin-right: 8px;
+              width: 20px;
+              height: 20px;
+              appearance: none;
+              border: 1px solid $DarkGray;
+              border-radius: 50%;
+
+              cursor: pointer;
+              &:checked {
+                background-color: white;
+                position: relative;
+
+                &::after {
+                  content: "";
+                  width: 10px;
+                  height: 10px;
+                  background-color: $ModerateCyan;
+                  border-radius: 50%;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  border-color: black;
+                }
+              }
+            }
+
+            label {
+              margin-right: 8px;
+              color: $DarkGray;
+              font-weight: 700;
+              cursor: pointer;
+            }
+
+            p {
+              color: hsla(176, 50%, 47%, 0.464);
+              font-weight: 700;
+            }
+          }
+        }
+        .modalLeft-selected {
+          display: flex;
+          width: 300px;
+          align-items: center;
+          justify-content: flex-end;
+
+          h4 {
+            margin-right: 6px;
+            color: rgba(0, 0, 0, 0.661);
+          }
+
+          p {
+            color: hsla(0, 0%, 48%, 0.719);
+            font-size: 14px;
+            font-weight: 700;
+          }
+        }
+
+        .txt-selected {
+          color: hsla(0, 0%, 48%, 0.719);
+          line-height: 1.8em;
+          margin-left: 20px;
+          padding: 4px;
+        }
       }
     }
   }

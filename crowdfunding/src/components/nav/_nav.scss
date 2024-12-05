@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   justify-content: flex-end;
-  
+
   color: white;
   width: 100%;
 
@@ -36,6 +36,7 @@
     .icone-close-menu {
       margin: 0;
       width: 20px;
+      cursor: pointer;
     }
 
     @media screen and (max-width: 800px) {
