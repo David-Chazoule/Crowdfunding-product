@@ -27,12 +27,33 @@
     background-color: white;
     margin-top: 20px;
 
+    @media screen and (max-width: 700px) {
+      top: 10%;
+    }
+
+    @media screen and (max-width: 550px) {
+      width: 300px;
+      top: 6%;
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 200px;
+    }
+
     img {
       width: 80px;
       margin: 10px 0;
+
+      @media screen and (max-width: 400px) {
+        width: 60px;
+      }
     }
     h2 {
       margin: 10px 0;
+      @media screen and (max-width: 400px) {
+        font-size: 20px;
+        text-align: center;
+      }
     }
     p {
       color: $DarkGray;
@@ -40,6 +61,9 @@
       text-align: center;
       line-height: 2em;
       margin: 0;
+      @media screen and (max-width: 400px) {
+        font-size: 14px;
+      }
     }
 
     button {
