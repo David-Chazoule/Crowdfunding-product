@@ -89,7 +89,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                   checked={selectedCard === "card0"}
                   onChange={() => handleCardSelect("card0")}
                 />{" "}
-                <label>Pledge with no reward</label>
+                <label className="label-no-reward">Pledge with no reward</label>
               </div>
             </div>
             <p className="txt">
@@ -116,7 +116,10 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                   checked={selectedCard === "card1"}
                   onChange={() => handleCardSelect("card1")}
                 />{" "}
-                <label> Bamboo Stand</label> <p>Pledge $25 or more</p>
+                <div>
+                  {" "}
+                  <label> Bamboo Stand</label> <p>Pledge $25 or more</p>
+                </div>
               </div>{" "}
               <div className="modalLeft">
                 {" "}
@@ -129,6 +132,12 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               us launch our promotional campaign, and you’ll be added to a
               special Backer member list.
             </p>
+            <div className="modalbottom">
+              {" "}
+              <h4>{bambooStandQuantity}</h4>
+              <p>left</p>
+            </div>
+
             {selectedCard === "card1" && (
               <div className="pledge-box">
                 <p>Enter your pledge</p>{" "}
@@ -167,8 +176,10 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                   checked={selectedCard === "card2"}
                   onChange={() => handleCardSelect("card2")}
                 />{" "}
-                <label>Black Edition Stand</label>
-                <p>Pledge $75 or more</p>
+                <div>
+                  <label>Black Edition Stand</label>
+                  <p>Pledge $75 or more</p>
+                </div>
               </div>{" "}
               <div className="modalLeft">
                 {" "}
@@ -182,6 +193,12 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               thank you. You’ll be added to our Backer member list. Shipping is
               included.
             </p>
+
+            <div className="modalbottom">
+              {" "}
+              <h4>{blackEditionQuantity}</h4>
+              <p>left</p>
+            </div>
             {selectedCard === "card2" && (
               <div className="pledge-box">
                 <p>Enter your pledge</p>{" "}
@@ -211,8 +228,11 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                   type="radio"
                   name="pledge"
                 />{" "}
-                <label>Mahogany Special Edition</label>
-                <p>Pledge $200 or more</p>
+                <div>
+                  {" "}
+                  <label>Mahogany Special Edition</label>
+                  <p>Pledge $200 or more</p>{" "}
+                </div>
               </div>{" "}
               <div className="modalLeft-selected">
                 {" "}
@@ -226,6 +246,11 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               a personal thank you. You’ll be added to our Backer member list.
               Shipping is included.
             </p>
+            <div className="modalbottom-selected">
+              {" "}
+              <h4>0</h4>
+              <p>left</p>
+            </div>
           </div>
         </div>
       </div>
