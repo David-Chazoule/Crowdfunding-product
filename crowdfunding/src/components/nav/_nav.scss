@@ -1,7 +1,6 @@
 .navbar {
   display: flex;
   justify-content: flex-end;
-
   color: white;
   width: 100%;
 
@@ -64,6 +63,7 @@
 
     h2 {
       margin: 0;
+      font-size: 20px;
 
       @media screen and (max-width: 800px) {
         padding: 30px;

@@ -27,10 +27,12 @@ function CounterComponent() {
         <div className="collect">
           <h2>${totalAmount}</h2>
           <p>of ${goal} backed</p>
+          <span className="line"></span>
         </div>
         <div className="backers-box">
           <h2>{totalBackers}</h2>
           <p>totals backers</p>
+          <span className="line"></span>
         </div>
         <div className="daysleft">
           <h2>56</h2>

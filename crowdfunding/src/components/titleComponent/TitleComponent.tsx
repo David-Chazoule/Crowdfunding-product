@@ -23,7 +23,7 @@ function TitleComponent({ handleModal }: Titleprops) {
       <div className="footer-title-box">
         <button onClick={handleModal}>Back this project</button>{" "}
         <div className="bookmaked" onClick={handleBookmarked}>
-          <div>
+          <div className="logo-bookmaked-box">
             <Bookmark selectBookmarked={selectBookmarked} />
           </div>
 
