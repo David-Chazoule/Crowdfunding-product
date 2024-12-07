@@ -7,7 +7,7 @@ export interface Titleprops {
 }
 
 function TitleComponent({ handleModal }: Titleprops) {
-  const [selectBookmarked, setSelectBookmarked] = useState<boolean>(false);
+  const [selectBookmarked, setSelectBookmarked] = useState<boolean>(true);
 
   const handleBookmarked = () => {
     setSelectBookmarked(!selectBookmarked);

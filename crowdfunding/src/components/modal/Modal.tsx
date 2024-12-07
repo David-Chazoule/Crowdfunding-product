@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppState } from "../../appContext/AppContext";
+
 import Closer from "../UI/Closer";
 export interface Modalprops {
   handleModal: () => void;
@@ -8,16 +9,21 @@ export interface Modalprops {
 
 function Modal({ handleModal, handleConfirm }: Modalprops) {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const { state, dispatch } = useAppState();
   const { bambooStandQuantity, blackEditionQuantity } = state;
+
   const [prices, setPrices] = useState({
     bamboPrice: state.bamboPrice,
     blackEditionPrice: state.blackEditionPrice,
   });
 
+  // Effect hook to update prices whenever the selected card or prices from the global state change
   useEffect(() => {
+    // If Bamboo Stand is selected, update its price
     if (selectedCard === "card1") {
       setPrices((prev) => ({ ...prev, bamboPrice: state.bamboPrice }));
+      // If Black Edition is selected, update its price
     } else if (selectedCard === "card2") {
       setPrices((prev) => ({
         ...prev,
@@ -26,33 +32,58 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
     }
   }, [selectedCard, state.bamboPrice, state.blackEditionPrice]);
 
+  // Handler to update prices when the input value changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Get the value from the input field (convert to number or leave empty string)
+    const value = e.target.value === "" ? "" : Number(e.target.value);
+    // Update the price state based on the selected card
+
+    const key = selectedCard === "card1" ? "bamboPrice" : "blackEditionPrice";
+
     setPrices((prev) => ({
       ...prev,
-      [selectedCard === "card1" ? "bamboPrice" : "blackEditionPrice"]: Number(
-        e.target.value
-      ),
+      [key]: value, // Update the specific price (either bamboPrice or blackEditionPrice)
     }));
+    setError(null);
   };
 
+  // Handle form submission
   const handleSumbmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch({ type: "ADD_TO_BACKERS", payload: 1 });
-    handleModal();
-    handleConfirm();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Validation: check if the input price is less than the minimum price for the selected card
+    if (selectedCard === "card1" && prices.bamboPrice < state.bamboPrice) {
+      setError(`Minimum value is $${state.bamboPrice} for Bamboo Stand.`);
+      return;
+    }
 
-    if (selectedCard === "card1")
-      dispatch({ type: "SUBTRACT_BAMBO_QUANTITY", payload: 1 });
-    dispatch({ type: "ADD_TO_TOTAL_AMOUNT", payload: prices.bamboPrice });
-    if (selectedCard === "card2")
-      dispatch({ type: "SUBTRACT_BLACK_EDITION_QUANTITY", payload: 1 });
-    dispatch({
-      type: "ADD_TO_TOTAL_AMOUNT",
-      payload: prices.blackEditionPrice,
-    });
+    if (
+      selectedCard === "card2" &&
+      prices.blackEditionPrice < state.blackEditionPrice
+    ) {
+      setError(
+        `Minimum value is $${state.blackEditionPrice} for Black Edition.`
+      );
+      return;
+    } else {
+      // If the input is valid, dispatch actions and perform the necessary updates
+      dispatch({ type: "ADD_TO_BACKERS", payload: 1 });
+      handleModal();
+      handleConfirm();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Perform additional actions based on the selected card
+      if (selectedCard === "card1")
+        dispatch({ type: "SUBTRACT_BAMBO_QUANTITY", payload: 1 });
+      dispatch({ type: "ADD_TO_TOTAL_AMOUNT", payload: prices.bamboPrice });
+      if (selectedCard === "card2")
+        dispatch({ type: "SUBTRACT_BLACK_EDITION_QUANTITY", payload: 1 });
+      dispatch({
+        type: "ADD_TO_TOTAL_AMOUNT",
+        payload: prices.blackEditionPrice,
+      });
+    }
   };
 
+  // Handler to select a card (either 'card1' or 'card2')
   const handleCardSelect = (cardId: string) => {
     setSelectedCard(cardId);
   };
@@ -144,7 +175,9 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                 <div className="price-select">
                   <form onSubmit={handleSumbmit}>
                     {" "}
-                    <div className="input-price">
+                    <div
+                      className={`input-price ${error ? "input-error" : ""}`}
+                    >
                       <p>$</p>
                       <input
                         type="number"
@@ -157,6 +190,9 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                 </div>
               </div>
             )}
+            {selectedCard === "card1"
+              ? error && <p className="error">*{error}</p>
+              : ""}
           </div>
 
           <div
@@ -205,7 +241,9 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                 <div className="price-select">
                   <form onSubmit={handleSumbmit}>
                     {" "}
-                    <div className="input-price">
+                    <div
+                      className={`input-price ${error ? "input-error" : ""}`}
+                    >
                       <p>$</p>
                       <input
                         type="number"
@@ -218,6 +256,9 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                 </div>
               </div>
             )}
+            {selectedCard === "card2"
+              ? error && <p className="error">*{error}</p>
+              : ""}
           </div>
 
           <div className="modal-card-selected">

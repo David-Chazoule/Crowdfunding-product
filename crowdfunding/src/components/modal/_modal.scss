@@ -311,6 +311,10 @@
                 }
               }
 
+              .input-error {
+                border: 2px solid red;
+              }
+
               button {
                 padding: 14px 20px;
                 border-radius: 20px;
@@ -337,6 +341,11 @@
               }
             }
           }
+        }
+        .error {
+          color: red;
+          font-size: 10px;
+          font-style: italic;
         }
       }
       .selected {

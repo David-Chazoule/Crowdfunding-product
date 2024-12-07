@@ -55,14 +55,14 @@
       p {
         margin: 0;
         color: $DarkGray;
-        font-weight: 600;
+        
       }
 
       .line {
         display: none;
         height: 5px;
         width: 80px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.249);
+        border-bottom: 1px solid rgb(193, 192, 192);
         margin-top: 5px;
         color: $DarkGray;
 
@@ -74,7 +74,7 @@
 
     .collect,
     .backers-box {
-      border-right: 1px solid black;
+      border-right: 1px solid rgb(193, 192, 192);
 
       @media screen and (max-width: 700px) {
         border-right: none;
@@ -103,4 +103,6 @@
       }
     }
   }
+
+  
 }

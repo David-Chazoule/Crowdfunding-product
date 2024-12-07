@@ -6,7 +6,7 @@ function CounterComponent() {
   const { totalAmount, totalBackers } = state;
   const goal: number = 100000;
 
-  let progress = Math.round((totalAmount / goal) * 100);
+ 
 
   const progression = () => {
     let result: number = 0;
@@ -20,17 +20,21 @@ function CounterComponent() {
     return result;
   };
 
-  console.log(progress);
+ const formatNumber = (number : number):string => {
+ return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+ }
+
+
   return (
     <div className="container-goal">
       <div className="goal-collect-box">
         <div className="collect">
-          <h2>${totalAmount}</h2>
-          <p>of ${goal} backed</p>
+          <h2>${formatNumber(totalAmount)}</h2>
+          <p>of ${formatNumber(goal)} backed</p>
           <span className="line"></span>
         </div>
         <div className="backers-box">
-          <h2>{totalBackers}</h2>
+          <h2>{formatNumber(totalBackers)}</h2>
           <p>totals backers</p>
           <span className="line"></span>
         </div>
