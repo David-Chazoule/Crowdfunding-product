@@ -3,9 +3,9 @@
 <img src="https://i.imgur.com/YBTfaTx.png" alt="main-page" style="width:400px; height:auto;">  <img src="https://i.imgur.com/4ak6rk8.png" alt="main-page-project" style="width:400px; height:auto;"><img src="https://i.imgur.com/LwErpBe.png" alt="product-list modal" style="width:400px; height:auto;"> <img src="https://i.imgur.com/BXbel7K.png" alt="confirm-modal" style="width:400px; height:auto;">
 
 
-This is my solution to the [Product-list](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d) on Frontend Mentor.
+This is my solution to the [Crowdfunding-product](https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR) on Frontend Mentor.
 
-[Online here](https://david-chazoule.github.io/Product-list/)
+[Online here](https://david-chazoule.github.io/Crowdfunding-product/)
 
 Thanks for checking out this front-end coding challenge.
 
@@ -15,21 +15,19 @@ To do this challenge, you need a basic understanding of HTML, CSS and JavaScript
 
 
 ## The challenge
-Your challenge is to build out this product list project that includes a functional cart and get it looking as close to the design as possible.
+Your challenge is to build out this crowdfunding product page and get it looking as close to the design as possible.
 
-You can use any tools you like to help you complete the challenge. So, if you have something you'd like to practice, feel free to give it a go.
-
-We provide the data for the products in a local data.json file. So you can use that to populate the UI dynamically if you choose.
+You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
 
 Your users should be able to:
 
--Add items to the cart and remove them
--Increase/decrease the number of items in the cart
--See an order confirmation modal when they click "Confirm Order"
--Reset their selections when they click "Start New Order"
--Navigate the whole project and perform all actions using only their keyboard
--View the optimal layout for the interface depending on their device's screen size
--See hover and focus states for all interactive elements on the page
+Make a selection of which pledge to make
+See an updated progress bar and total money raised based on their pledge total after confirming a pledge
+See the number of total backers increment by one after confirming a pledge
+Toggle whether or not the product is bookmarked
+View the optimal layout depending on their device's screen size
+See hover states for interactive elements
+Download the project and go through the README.md file. This will provide further details about the project and help you get set up.
 
 ## Technologies Used
 
@@ -60,6 +58,5 @@ Here's an overview of the project structure:
 
 - `src/`: Contains the source code for the application.
 - `components/`: Reusable React components.
-- `Styles/`: Sass files for styling and font.
-- `assets`: Contains images and icone.
-- `data`: Contains data for navbar.
+- `Styles/`: Sass files for styling , images and font.
+
