@@ -268,6 +268,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
                   className="input-title-selected"
                   type="radio"
                   name="pledge"
+                  checked={true}
                 />{" "}
                 <div>
                   {" "}

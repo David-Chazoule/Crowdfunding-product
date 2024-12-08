@@ -382,17 +382,17 @@
               appearance: none;
               border: 1px solid $DarkGray;
               border-radius: 50%;
-
               cursor: pointer;
+
               &:checked {
-                background-color: white;
+                background-color: rgb(198, 194, 194);
                 position: relative;
 
                 &::after {
                   content: "";
                   width: 10px;
                   height: 10px;
-                  background-color: $ModerateCyan;
+                  background-color: $DarkGray;
                   border-radius: 50%;
                   position: absolute;
                   top: 50%;
