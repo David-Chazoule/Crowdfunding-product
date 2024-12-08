@@ -88,6 +88,8 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
     setSelectedCard(cardId);
   };
 
+  console.log(selectedCard); 
+
   return (
     <div className="modal-container">
       <div className="modal">
@@ -115,7 +117,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               <div className="input-box">
                 <input
                   type="radio"
-                  name="pledge"
+                  name="noReward"
                   className="input-title"
                   checked={selectedCard === "card0"}
                   onChange={() => handleCardSelect("card0")}
@@ -142,7 +144,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               <div className="input-box">
                 <input
                   type="radio"
-                  name="pledge"
+                  name="bamboo"
                   className="input-title"
                   checked={selectedCard === "card1"}
                   onChange={() => handleCardSelect("card1")}
@@ -207,7 +209,7 @@ function Modal({ handleModal, handleConfirm }: Modalprops) {
               <div className="input-box">
                 <input
                   type="radio"
-                  name="pledge"
+                  name="blackEdition"
                   className="input-title"
                   checked={selectedCard === "card2"}
                   onChange={() => handleCardSelect("card2")}
